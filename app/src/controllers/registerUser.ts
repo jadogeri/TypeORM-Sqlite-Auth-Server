@@ -10,6 +10,7 @@ export const registerUser = asyncHandler( async (req : Request, res: Response) =
     const user = await userService.create(req.body);
     res.status(201).json(user);
  } catch (error: unknown) {
+    if (error instanceof Request) {
     if (error instanceof SyntaxError && error.message.includes('Bad control character in string literal in JSON')) {
       console.error('JSON parsing error:', error.message);
       res.status(400).json("registerUser" +'Invalid JSON: Contains unescaped control characters.');
@@ -22,6 +23,10 @@ export const registerUser = asyncHandler( async (req : Request, res: Response) =
     //   } else {
     //     res.send("Caught an unknown error:" +  error);
     //   }
+    }else {
+      // Catch other unexpected errors
+      res.status(500).json('An unexpected error occurred:' + error);
     }
+}
 });
 
