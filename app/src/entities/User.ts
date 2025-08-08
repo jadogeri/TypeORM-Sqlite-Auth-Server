@@ -20,7 +20,7 @@ export class User {
     @Column({ default: true, type:"boolean" })
     isEnabled: boolean;
 
-    @Column({ type: "number", default: 0 })
+    @Column({ type: "int", default: 0 })
     failedLogins: number;
 
     @CreateDateColumn()
