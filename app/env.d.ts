@@ -1,13 +1,11 @@
 declare global {
-  var localStorage: LocalStorage;
     namespace Express {
       interface Request {
         user: {
             username:string;
             email:string
-            id:mongoose.Types.ObjectId
         },
-        body: IUser | IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
+        // body: IUser | IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
       }
     }
     namespace NodeJS {
@@ -31,6 +29,3 @@ declare global {
 
   export {}
 
-  declare global {
-    var localStorage: LocalStorage;
-  }
