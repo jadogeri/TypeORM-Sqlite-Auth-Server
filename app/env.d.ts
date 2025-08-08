@@ -16,7 +16,7 @@ declare global {
         BCRYPT_SALT_ROUNDS : string;
         BASE_URL : string;
         NANOID_SIZE : string;
-        PORT: number;
+        PORT: string;
         NODEMAILER_USERNAME : string;
         NODEMAILER_PASSWORD : string;
         TWILIO_ACCOUNT_SID : string;
