@@ -2,6 +2,7 @@
 import { AppDataSource } from "./src/data-source";
 import express, { Response, Request } from "express";
 import { corsOptions } from "./src/configs/cors"
+import cors from "cors"
 
 AppDataSource.initialize()
     .then(async () => {
@@ -9,9 +10,11 @@ AppDataSource.initialize()
         app.use(express.json());
         app.use(cors(corsOptions)) 
 
-
-        app.listen(3000, () => {
-            console.log("Server running on port 3000");
+        app.get('/', (req: Request, res : Response) => {
+        res.send({message:"Welcome to Server API"});
+        });
+                app.listen(3500, () => {
+            console.log("Server running on port 3500");
         });
     })
     .catch((error) => console.log(error));
