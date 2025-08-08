@@ -64,4 +64,17 @@ export const registerUser = asyncHandler( async (req : Request, res: Response) =
       console.error('An unexpected error occurred:', error);
     }
   });
+
+
+
+  
+// Custom error handling middleware for body-parser errors
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    // Handle invalid JSON specifically
+    return res.status(400).send('Invalid JSON format in request body.');
+  }
+  // Pass other errors to the next error handler or Express's default
+  next(err);
+});
  */
